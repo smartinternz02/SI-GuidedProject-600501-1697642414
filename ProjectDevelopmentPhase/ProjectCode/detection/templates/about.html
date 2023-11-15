@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="../static/font-awesome.css" rel="stylesheet">
+
+    <!--fonts-->
+    <link href="//fonts.googleapis.com/css?family=Oswald:300,400,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Federo" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <!--//fonts-->
+    <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js">
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
+    {% if title %}
+        <title>Covid-19 Detection - {{ title }}</title>
+    {% else %}
+        <title>Covid-19 Detection</title>
+    {% endif %}
+</head>
+<body>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="/">CoVid-19 Detection</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              {% if current_user.is_authenticated %}
+                <a class="nav-item nav-link" href="{{ url_for('about')}}">Home</a>
+                <a class="nav-item nav-link" href="{{ url_for('upload')}}">Upload</a>
+              {% endif %}
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+              {% if current_user.is_authenticated %}
+                <a class="nav-item nav-link" href="{{ url_for('account') }}">Account</a>
+                <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
+              {% else %}
+                <a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a>
+                <a class="nav-item nav-link" href="{{ url_for('register') }}">Register</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+          <section class="banner-info" id="home">
+              <video src="..\static\style\How COVID-19 Affects Your Lungs(720P_HD).mp4" type="video/mp4" autoplay muted loop></video>
+              <div class="banner-cont">
+              </div>
+            </section>
+
+          <section class="about-info" id="about">
+              <div class="container1">
+                  <div class="page-headings">
+                      <h3>About COVID-19</h3>
+                      <p>COVID-19, caused by the SARS-CoV-2 virus, primarily affects the respiratory system, including the lungs. 
+                          It can lead to symptoms like cough, shortness of breath, and pneumonia. 
+                          In severe cases, it can cause acute respiratory distress syndrome (ARDS), which is a life-threatening condition where the lungs become severely inflamed and filled with fluid. 
+                          The virus can also have long-term effects on the lungs, leading to conditions like post-COVID fibrosis.
+                           Protecting yourself with vaccination, wearing masks, and practicing good hygiene can reduce the risk of infection and lung-related complications.</p>
+                  </div>
+
+                  <section class="experience-info">
+                    <div class="container1">
+                      <div class="page-headings">
+                        <h3>Symtoms of COVID-19</h3>
+
+                      </div>
+
+
+                      <div class="box-content">
+                        <div class="mid-box">
+                          <img src="..\static\style\S1.png">
+                        </div>
+                        <div class="mid-box">
+                          <img src="..\static\style\S2.png">
+                        </div>
+                        <div class="mid-box">
+                          <img src="..\static\style\S3.png">
+                        </div>
+                        <div class="mid-box">
+                          <img src="..\static\style\S5.png">
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </section>
+
+                  <div class="Steps">
+                      <br>
+                      <br>
+                      
+                      <h3>precautionary measures to prevent covid 19</h3>
+
+                  </div>
+
+                  <div class="steps1">  
+
+                  </div>
+                      
+
+                        <div class="box-content">
+                            <div class="mid-box">
+                                <img src="..\static\style\SS1.png">
+                            </div>
+                            <div class="mid-box">
+                                <img src="..\static\style\SS2.png">
+                            </div>
+                            <div class="mid-box">
+                                <img src="..\static\style\SS3.png">
+                            </div>
+                            <div class="mid-box">
+                                <img src="..\static\style\SS4.png">
+                            </div>
+
+                        </div>
+
+                    
+              </div>
+          </section>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
